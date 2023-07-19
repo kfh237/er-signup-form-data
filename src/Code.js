@@ -6,15 +6,11 @@ function sanitize(e) {
     lr = sheet.getLastRow(),
     d = e.namedValues;
 
-  // Logger.log(JSON.stringify(d));
-
   sheet.insertRowAfter(lr);
 
   let student = [
     [d['First name'][0], d['Last name'][0], d['Preferred name'][0], d['NetID'][0], d['Timestamp'][0], 0, 0]
   ];
-
-  Logger.log(JSON.stringify(student));
 
   lr = sheet.getLastRow() + 1;
 
