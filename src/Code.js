@@ -1,18 +1,20 @@
-// let ss = SpreadsheetApp.openById('1h2mZPw-CIv0ajfLYrGS0lpYUk8yAM-_OKBFK_YSTzEk');
 let ss = SpreadsheetApp.getActiveSpreadsheet();
 
 function sanitize(e) {
-  let sheet = ss.getSheetByName('Students'),
-    lr = sheet.getLastRow(),
-    d = e.namedValues;
+  if (e.values.indexOf('I Agree') > -1) {
 
-  sheet.insertRowAfter(lr);
+    let sheet = ss.getSheetByName('Students'),
+      lr = sheet.getLastRow(),
+      d = e.values;
 
-  let student = [
-    [d['First name'][0], d['Last name'][0], d['Preferred name'][0], d['NetID'][0], d['Timestamp'][0], 0, 0]
-  ];
+    sheet.insertRowAfter(lr);
 
-  lr = sheet.getLastRow() + 1;
+    let student = [
+      [d[2], d[3], d[4], d[5], d[0], 0, 0]
+    ];
 
-  sheet.getRange(lr, 1, 1, student[0].length).setValues(student);
+    lr = sheet.getLastRow() + 1;
+
+    sheet.getRange(lr, 1, 1, student[0].length).setValues(student);
+  }
 }
